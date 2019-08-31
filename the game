@@ -1,0 +1,73 @@
+import random
+import time
+
+
+
+print('Hello welcome to Bull or injury goodluck!')
+print(' the PC choosing colors...')
+time.sleep(1.5)
+#choose a colors in list
+list_color = ['yellow', 'green', 'red', 'orange', 'white', 'blue']
+list_pc = []
+index_random = 5
+for i in range(4):
+    color_choose_random = random.randint(0,index_random)
+    index_random = index_random - 1
+    list_pc.insert(1, list_color[color_choose_random])
+    list_color.remove(list_color[color_choose_random])    
+list_color = ['yellow', 'green', 'red', 'orange', 'white', 'blue']
+
+
+pp = 0
+while pp != 10:
+        pp = pp + 1
+
+
+#creat player color list
+        pn = 0
+        playerlist = []
+        while len(playerlist) < 4:
+                equal = False
+                while equal == False:
+                        player_input = input('ok, choose a color\n')
+                        for lc in list_color:
+                                if lc == player_input:
+                                        equal = True
+                                        for ec in playerlist:
+                                                while ec == player_input:
+                                                        player_input = input('try diftent color!\n')
+                pn = pn + 1
+                playerlist.insert(pn, player_input)
+                print(playerlist)
+
+
+        b = 'black'
+        w = 'white'
+        index_lst_black = -1
+        cb = 0
+
+#checking if there in a black
+        for check_black in list_pc:
+                index_lst_black = index_lst_black + 1
+                if check_black == playerlist[index_lst_black]:
+                        print(b)
+                        cb = cb + 1
+                        playerlist.remove(playerlist[index_lst_black])
+                        index_lst_black = index_lst_black -1
+        if cb == 4:
+                break
+
+
+#checking if there is a white
+        for check_white in list_pc:
+                for check_white1 in playerlist:
+                        if check_white1 == check_white:
+                                print(w)
+
+
+
+#print the results
+if pp == 10 and cb != 4:
+        print('Ho no you lose! try again next time!')
+if cb == 4:
+        print('Yey you won! very good!')
